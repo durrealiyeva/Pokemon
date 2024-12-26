@@ -1,0 +1,91 @@
+body {
+  background-image: url(https://media1.tenor.com/m/XNAmU9SNZ80AAAAd/rock-paper-scissors-nickelodeon.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#fon {
+  display: block;
+}
+#progress {
+  box-shadow:0 0 5px 5px rgb(35, 38, 64);
+}
+#game {
+  display: none;
+}
+#start,
+#exit {
+  margin: 25px;
+  width: 250px;
+  height: 70px;
+  border-radius: 999px;
+  background-color: blue;
+  animation: flicker 0.5s infinite;
+  color: white;
+  cursor: pointer;
+}
+#start:hover,
+#exit:hover {
+  background-color: white;
+  color: blue;
+  animation: none;
+}
+@keyframes flicker {
+  50% {
+    background-color: #5a5188; /* Başlangıç rəngi */
+  }
+  100% {
+    background-color: blue; /* Sonra geri normal rəng */
+  }
+}
+#begin {
+  width: 60%;
+  display: none;
+  text-align: center;
+}
+#name {
+  border-color: blue;
+  background: linear-gradient( 90deg, rgb(18, 12, 120) 0%,rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  letter-spacing: 3px;
+  font-family: cursive;
+  box-shadow: 0 0 5px 5px blue;
+}
+.card {
+  width: 400px;
+  height: 150px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 0 10px 10px #482bd9;
+  transition: transform 0.5s ease-in-out;
+}
+.card:hover {
+  transform: scale(1.1);
+}
+.card img{
+  object-fit: cover;
+}
+.player,
+.comp,
+.draw,
+#enter {
+  font-weight: 600;
+  font-family: cursive;
+  color: blue;
+}
+#enter {
+  display: block;
+}
+.btn {
+  width: 200px;
+  height: 60px;
+  font-weight: 700;
+}
+#end{
+  display: none;
+}
