@@ -80,7 +80,7 @@ body {
 #enter {
   display: block;
 }
-.btn {
+#rock,#paper,#scissor{
   width: 130px;
   height: 50px;
   font-weight: 700;
