@@ -17,6 +17,9 @@ class RockPaperScissor {
     this.comp = document.querySelector("#comp");
     this.end = document.querySelector("#end");
     this.win = document.querySelector("#win");
+    this.audio = document.querySelector("#myAudio");
+    this.cardUser = document.querySelector("#cardUser");
+    this.cardComp = document.querySelector("#cardComp");
     this.images = {
       r: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVwuVFxLNdwAgPvkB9beREEzcMgzDdvsKAKZud0HggUv75vDPDaZBbSeMrHPc6iAqC_Ps&usqp=CAU",
       p: "https://preview.redd.it/dandys-world-styled-rock-paper-scissors-v0-uaxd6k131wyd1.png?width=640&crop=smart&auto=webp&s=7a7b88700de4ecde5dfda28ff4bdf9a9f5353fd8",
@@ -29,18 +32,21 @@ class RockPaperScissor {
 
   Progress() {
     let progressEl = 0;
-    setInterval(() => {
+    const intervalid=setInterval(() => {
       if (progressEl < 100) {
         progressEl += 1;
         this.progressBar.style.width = `${progressEl}%`;
         this.progressBar.textContent = `${progressEl}%`;
+        this.audio.play()
       } else {
+        clearInterval(intervalid)
         setTimeout(() => {
+          this.begin.style.display = "block";
           this.progress.style.display = "none";
-          this.game.style.display = "block";
         }, 1000);
+        this.audio.pause()
       }
-    }, 30);
+    }, 100)
   }
 
   Start() {
@@ -51,10 +57,10 @@ class RockPaperScissor {
       this.start.style.display = "none";
       this.exit.style.display = "none";
       this.fon.style.display = "none";
-      this.begin.style.display = "block";
-
+      this.progress.style.display = "block";
       this.PlayerName();
       this.Again();
+      this.Progress()
     };
   }
 
@@ -131,12 +137,18 @@ class RockPaperScissor {
     ) {
       this.pointP++;
       this.player.textContent = this.pointP;
+      this.cardComp.style.boxShadow="0 0 10px 10px rgb(222, 22, 25)"
+      this.cardUser.style.boxShadow="0 0 10px 10px rgb(29, 22, 222)"
     } else if (this.playerImg.src === this.compImg.src) {
       this.pointD++;
       this.draw.textContent = this.pointD;
+      this.cardComp.style.boxShadow="0 0 10px 10px rgb(29, 22, 222)"
+      this.cardUser.style.boxShadow="0 0 10px 10px rgb(29, 22, 222)"
     } else {
       this.pointC++;
       this.comp.textContent = this.pointC;
+      this.cardUser.style.boxShadow="0 0 10px 10px rgb(209, 24, 46)"
+      this.cardComp.style.boxShadow="0 0 10px 10px rgb(29, 22, 222)"
     }
 
     if (this.pointP === 6) {
@@ -163,6 +175,5 @@ class RockPaperScissor {
   }
 }
 const app = new RockPaperScissor();
-app.Progress();
 app.Start();
 app.Control();
